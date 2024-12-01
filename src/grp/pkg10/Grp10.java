@@ -16,10 +16,8 @@ package grp.pkg10;
 public class Grp10 {
     public static void main(String[] args) {
         Game game = new Game();
-        game.addPlayer(new HumanPlayer("PARTH"));
-        game.addPlayer(new AIPlayer("RUBY"));
-
-        game.startGame(5); // 5 rounds
+        game.addPlayer(new HumanPlayer("Fagun Miss"));
+        game.addPlayer(new AIPlayer("PARTH (Bot) "));
+        game.startGame(5); // Play for 5 rounds
     }
 }
-

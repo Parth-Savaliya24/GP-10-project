@@ -1,17 +1,21 @@
 package grp.pkg10;
 
 // **Inheritance**: Abstract class serves as a blueprint for different player types
+// Player.java
 public abstract class Player {
-    private String name; // **Encapsulation**: Private field with controlled access
+    protected String name;
+    protected MoveStrategy moveStrategy;
 
-    public Player(String name) {
+    public Player(String name, MoveStrategy moveStrategy) {
         this.name = name;
+        this.moveStrategy = moveStrategy;
     }
 
     public String getName() {
         return name;
     }
 
-    // Abstract method ensures cohesion by enforcing subclasses to implement specific behavior
-    public abstract Card playCard();
+    public void makeMove() {
+        moveStrategy.makeMove(name);
+    }
 }
