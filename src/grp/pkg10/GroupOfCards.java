@@ -1,52 +1,33 @@
-/**
- * SYST 17796 Project Base code.
- * Students can modify and extend to implement their game.
- * Add your name as an author and the date!
- */
 package grp.pkg10;
 
-import java.util.ArrayList;
+import java.util.ArrayList; // Required for List implementation
+import java.util.List;
 import java.util.Collections;
 
-/**
- * A concrete class that represents any grouping of cards for a Game. HINT, you might want to subclass this more than
- * once. The group of cards has a maximum size attribute which is flexible for reuse.
- */
 public class GroupOfCards {
+    private List<Card> cards;
 
-    //The group of cards, stored in an ArrayList
-    private ArrayList<Card> cards;
-    private int size;//the size of the grouping
+    public GroupOfCards() {
+        cards = new ArrayList<>(); // Properly initialize the list
+        String[] ranks = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"};
+        String[] suits = {"Hearts", "Diamonds", "Clubs", "Spades"};
 
-    public GroupOfCards(int size) {
-        this.size = size;
-    }
-
-    /**
-     * A method that will get the group of cards as an ArrayList
-     *
-     * @return the group of cards.
-     */
-    public ArrayList<Card> getCards() {
-        return cards;
+        for (String suit : suits) {
+            for (String rank : ranks) {
+                cards.add(new Card(rank, suit)); // Populate deck
+            }
+        }
     }
 
     public void shuffle() {
-        Collections.shuffle(cards);
+        Collections.shuffle(cards); // Shuffle the deck
     }
 
-    /**
-     * @return the size of the group of cards
-     */
-    public int getSize() {
-        return size;
+    public Card drawCard() {
+        return cards.isEmpty() ? null : cards.remove(0); // Draw a card or return null
     }
 
-    /**
-     * @param size the max size for the group of cards
-     */
-    public void setSize(int size) {
-        this.size = size;
+    public boolean isEmpty() {
+        return cards.isEmpty();
     }
-
-}//end class
+}

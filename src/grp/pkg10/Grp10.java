@@ -4,17 +4,20 @@
  */
 package grp.pkg10;
 
+
+
 /**
  *
  * @author saval
  */
-public class Grp10 {
 
-    /**
-     * @param args the command line arguments
-     */
+
+
+public class Grp10 {
     public static void main(String[] args) {
-        // TODO code application logic here
+        Game game = new Game();
+        game.addPlayer(new HumanPlayer("Fagun Miss"));
+        game.addPlayer(new AIPlayer("PARTH (Bot) "));
+        game.startGame(5); // Play for 5 rounds
     }
-    
 }

@@ -1,26 +1,42 @@
-/**
- * SYST 17796 Project Base code.
- * Students can modify and extend to implement their game.
- * Add your name as an author and the date!
- */
 package grp.pkg10;
 
-/**
- * A class to be used as the base Card class for the project. 
- * Must be general enough to be instantiated for any Cardgame. 
- * Students wishing to add to the code should remember to add themselves as a modifier.
- *
- */
-public abstract class Card {
-    //default modifier for child classes
+import java.util.Objects;
 
-    /**
-     * Students should implement this method for their specific children classes
-     *
-     * @return a String representation of a card. Could be an UNO card, 
-     * a regular playing card etc.
-     */
+public class Card {
+    // **Encapsulation**: Private attributes with public getters for controlled access
+    private String rank;
+    private String suit;
+
+    // Constructor initializes rank and suit
+    public Card(String rank, String suit) {
+        this.rank = rank;
+        this.suit = suit;
+    }
+
+    public String getRank() {
+        return rank;
+    }
+
+    public String getSuit() {
+        return suit;
+    }
+
+    // Overriding equals and hashCode ensures accurate card comparison
     @Override
-    public abstract String toString();
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Card card = (Card) obj;
+        return rank.equals(card.rank) && suit.equals(card.suit);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(rank, suit);
+    }
+
+    @Override
+    public String toString() {
+        return rank + " of " + suit;
+    }
 }
